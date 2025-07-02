@@ -1,0 +1,22 @@
+### Create product
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "iPhone 15 Pro",
+  "description": "Flagship smartphone by Apple",
+  "price": 1099.99
+}
+
+### Another product
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Galaxy S24",
+  "description": "Flagship Samsung smartphone",
+  "price": 999.99
+}
+
+### Get all products
+GET http://localhost:8080/api/products
