@@ -2,6 +2,7 @@ package com.sun.microservices.product.controller;
 
 import com.sun.microservices.product.dto.response.ProductResponse;
 import com.sun.microservices.product.dto.request.ProductRequest;
+import com.sun.microservices.product.model.Product;
 import com.sun.microservices.product.service.ProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -16,13 +17,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ProductController {
-
     ProductService productService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductRequest productRequest) {
-        productService.createProduct(productRequest);
+    public Product createProduct(@RequestBody ProductRequest productRequest) {
+        return productService.createProduct(productRequest);
     }
 
     @GetMapping
@@ -30,5 +30,4 @@ public class ProductController {
     public List<ProductResponse> getAllProducts() {
         return productService.getAllProducts();
     }
-
 }

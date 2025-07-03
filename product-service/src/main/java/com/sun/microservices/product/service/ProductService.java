@@ -27,7 +27,7 @@ public class ProductService {
      *
      * @param productRequest the product to create
      */
-    public void createProduct(ProductRequest productRequest) {
+    public Product createProduct(ProductRequest productRequest) {
         Product product = Product.builder()
             .name(productRequest.name())
             .description(productRequest.description())
@@ -36,12 +36,13 @@ public class ProductService {
 
         productRepository.save(product);
         log.info("Product {} is saved", product.getId());
+        return product;
     }
 
     /**
-     * Finds all products in the database.
+     * Retrieves all products from the database and maps them to {@link ProductResponse}.
      *
-     * @return a list of products
+     * @return a list of {@link ProductResponse}
      */
     public List<ProductResponse> getAllProducts() {
         List<Product> products = productRepository.findAll();
