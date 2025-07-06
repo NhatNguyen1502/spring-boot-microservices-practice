@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "orderNumber": "123456789",
-  "skuCode": "iPhone 15",
+  "skuCode": "Iphone",
   "price": 1099.99,
   "quantity": 1
 }

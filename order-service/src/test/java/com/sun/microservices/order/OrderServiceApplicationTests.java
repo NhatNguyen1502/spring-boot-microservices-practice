@@ -3,6 +3,7 @@ package com.sun.microservices.order;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.sun.microservices.order.dto.request.OrderRequest;
+import com.sun.microservices.order.stub.InventoryClientStub;
 import io.restassured.RestAssured;
 import java.math.BigDecimal;
 import org.hamcrest.Matchers;
@@ -11,9 +12,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.testcontainers.containers.MySQLContainer;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureWireMock(port = 0)
 class OrderServiceApplicationTests {
 
     @ServiceConnection
@@ -40,6 +43,8 @@ class OrderServiceApplicationTests {
             .price(new BigDecimal("10.99"))
             .quantity(5)
             .build();
+
+        InventoryClientStub.stubInventoryCall(orderRequest.skuCode(), orderRequest.quantity());
 
         var response = RestAssured.given()
             .contentType("application/json")

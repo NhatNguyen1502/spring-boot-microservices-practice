@@ -5,7 +5,7 @@
 
     <groupId>com.sun.microservices</groupId>
     <artifactId>spring-boot-microservices</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>spring-boot-microservices</name>
 
@@ -22,6 +22,11 @@
         <maven.compiler.target>21</maven.compiler.target>
         <source.version>0.0.1-SNAPSHOT</source.version>
         <revision>0.0.1-SNAPSHOT</revision>
+
+        <spring-boot-dependencies.version>3.5.3</spring-boot-dependencies.version>
+        <testcontainers-bom.version>1.19.3</testcontainers-bom.version>
+        <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
+        <lombok.version>1.18.30</lombok.version>
     </properties>
 
     <!--  Manage dependencies for all modules -->
@@ -30,23 +35,28 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>3.5.3</version>
+                <version>${spring-boot-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>testcontainers-bom</artifactId>
-                <version>1.19.3</version>
+                <version>${testcontainers-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.30</version>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
